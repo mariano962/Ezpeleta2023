@@ -5,12 +5,14 @@
 }
 
 <body class="FondoRegister">
-    <h2 class="TituloRegister">@ViewData["Title"]</h2>
+    <h2 class="TituloRegister animate__animated animate__zoomIn">@ViewData["Title"]</h2>
+     <h3 class="SubtituloRegister">Crear una nueva cuenta.</h2>
 
-<div class="row">
-    <div class="col-md-4">
+<div class="Centrar">
+    <div class="">
+    <div class="Formulario">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h3 class="SubtituloRegister">Crea una nueva cuenta.</h2>
+           
             
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
@@ -33,16 +35,16 @@
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h3>Utilice otro servicio para registrarse.</h3>
+            @* <h3>Utilice otro servicio para registrarse.</h3> *@
             
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
-                        <p>
+                        @* <p>
                            No hay servicios de autenticación externos configurados. Mira esto <a href="https://go.microsoft.com/fwlink/?LinkID=532715">artículo
                             sobre la configuración de esta aplicación ASP.NET para admitir el inicio de sesión a través de servicios externos</a>.
-                        </p>
+                        </p> *@
                     </div>
                 }
                 else
@@ -61,6 +63,7 @@
             }
         </section>
     </div>
+</div>
 </div>
 </body>
 
