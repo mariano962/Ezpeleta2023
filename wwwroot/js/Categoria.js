@@ -22,6 +22,7 @@ function BuscarCategorias() {
                     <tr>
                         <td>${categoria.descripcion}</td>
                         <td><a class="btn btn-primary btn-sm" onClick="BuscarCategoria(${categoria.categoriaID})" role="button">Editar</a></td>
+                        <td><a class="btn btn-danger btn-sm" onClick="Deshabilitar(${categoria.categoriaID})" role="button">Deshabilitar</a></td>
                     </tr>
                 `);
 
@@ -112,6 +113,44 @@ function GuardarCategoria() {
             }
             else {
                 alert("Existe una Categoría con la misma descripción.");
+            }
+        },
+
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error: function (xhr, status) {
+            alert('Disculpe, existió un problema');
+        }
+    });
+}
+
+function Deshabilitar() {
+    //JAVASCRIPT
+    let descripcion1 = document.getElementById("Descripcion").value;
+    let descripcion2 = $("#Descripcion").val();
+    let categoriaID = $("#CategoriaID").val();
+    let eliminado = $("Eliminado").val();
+    $.ajax({
+        // la URL para la petición
+        url: '../../Categorias/Deshabilitar',
+        // la información a enviar
+        // (también es posible utilizar una cadena de datos)
+        data: { categoriaID: categoriaID, descripcion: descripcion1 ,Eliminado: eliminado},
+        // especifica si será una petición POST o GET
+        type: 'POST',
+        // el tipo de información que se espera de respuesta
+        dataType: 'json',
+        // código a ejecutar si la petición es satisfactoria;
+        // la respuesta es pasada como argumento a la función
+        success: function (resultado) {
+
+            if (resultado) {
+               
+                BuscarCategorias();
+            }
+            else {
+                alert("No se puede eliminar.");
             }
         },
 
