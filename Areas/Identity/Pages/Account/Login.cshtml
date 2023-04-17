@@ -5,20 +5,20 @@
     @{
     ViewData["Title"] = "Iniciar sesion";
 }
- <h3 class="TituloLog animate__animated animate__slideInUp">Utilice una cuenta local para iniciar sesión.</h3> <br>
+ <h2 class="TituloLog animate__animated animate__slideInUp">Utilice una cuenta local para iniciar sesión.</h3> <br>
 
 <div class="Centrar">
     <div class="">
-    <div class="FormulariosLogin">
+    <div class="FormularioLogin">
         <section>
             <form id="account" method="post">
                
-               
+                <h2>Iniciar sesion</h2>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
                     <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                     <label asp-for="Input.Email" class="form-label"></label>
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span> <br>
                 </div>
                 <div class="form-floating">
                     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />

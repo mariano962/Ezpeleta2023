@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Ezpeleta2023.Migrations
 {
-    public partial class MigracionInicial : Migration
+    public partial class Categoria : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

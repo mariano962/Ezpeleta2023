@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ezpeleta2023.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230405235731_MigracionInicial")]
-    partial class MigracionInicial
+    [Migration("20230417182259_Categoria")]
+    partial class Categoria
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

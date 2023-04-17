@@ -7,11 +7,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
+var Ezpeleta2023 = builder.Configuration.GetConnectionString("EzpeletaConnection");
+
+builder.Services.AddDbContext<Ezpeleta2023DbContext>(options =>
+    options.UseSqlServer(Ezpeleta2023));
+
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
     // builder.Services.AddDbContext<ApplicationDbContext>(options =>
     // options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
