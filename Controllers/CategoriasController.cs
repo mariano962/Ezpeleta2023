@@ -84,22 +84,25 @@ public class CategoriasController : Controller
         return Json(resultado);
     }
 
-    public JsonResult Deshabilitar(int CategoriaID, bool Eliminado)
+    public JsonResult Deshabilitar(int CategoriaID, int eliminado)
     {
-        bool resultado = false;
+        int resultado = 0;
 
         var Categoria = _contexto.Categorias.Find(CategoriaID);
         if (Categoria != null)
         {
+            if (Categoria.Eliminado == false)
+            {
             Categoria.Eliminado = true;
-            _contexto.SaveChanges();
-            
-        }
+            _contexto.SaveChanges();             
+            }
+       
         else {
-            resultado = false;
+            Categoria.Eliminado = false;
+            _contexto.SaveChanges();
         }
-
-
+            resultado = 1;
+        }
         return Json(resultado);
 
     }

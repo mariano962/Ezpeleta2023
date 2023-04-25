@@ -3,12 +3,13 @@
 }
 
 
-<!-- Modal -->
+<body class="FondoCategorias">
+  <!-- Modal -->
 <div class="modal fade" id="ModalCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar Categoria</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Categoría</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -28,26 +29,27 @@
 
 
 <div>
-    <h1 class="display-4">Categorias</h1>
+    <h1 class="display-4 TituloCategorias animate__animated animate__fadeInUpBig">Categorías</h1>
 
       <!-- Button trigger modal -->
       <div class="mb-2">
-        <button type="button" onclick="VaciarFormulario()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCategoria">
-            Nuevo
+        <button type="button" onclick="VaciarFormulario()" class="Botones" data-bs-toggle="modal" data-bs-target="#ModalCategoria">
+            Nueva categoria
         </button>
       </div>
 
 
-  <table class="table table-bordered table-striped table-condensed table-secondary">
+  <table class="table table-bordered table-striped table-condensed table-warning table-hover">
     <thead>
-        <tr>
-            <th>Descripcion</th>
+        <tr class="table-dark">
+            <th>Descripcion</th><th></th>
         </tr>
     </thead>
         <tbody id="tbody-categorias">        
         </tbody>
   </table>
 </div>
+</body>
 
 
  @section Scripts {

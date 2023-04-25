@@ -1,10 +1,10 @@
-window.onload = BuscarCategorias();
+window.onload = BuscarSubCategorias();
 
-function BuscarCategorias() {
-    $("#tbody-categorias").empty();
+function BuscarSubCategorias() {
+    $("#tbody-Subcategorias").empty();
     $.ajax({
         // la URL para la petición
-        url: '../../Categorias/BuscarCategorias',
+        url: '../../SubCategorias/BuscarSubCategorias',
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         data: {},
@@ -14,22 +14,23 @@ function BuscarCategorias() {
         dataType: 'json',
         // código a ejecutar si la petición es satisfactoria;
         // la respuesta es pasada como argumento a la función
-        success: function (categorias) {
+        success: function (subCategorias) {
 
-            $("#tbody-categorias").empty();
-            $.each(categorias, function (index, categoria) {
+            $("#tbody-subcategorias").empty();
+            $.each(subCategorias, function (index, subCategoria) {
 
-                let catDeshabilitar = '';
-                let boton = '<button type="button" onclick="BuscarCategoria(' + categoria.categoriaID + ')" class="btn btn-primary btn-sm" style="margin-right:5px">Editar Categoria</button>' +
-                    '<button type="button" onclick="Deshabilitar(' + categoria.categoriaID + ',1)" class="btn btn-danger btn-sm">Deshabilitar</button>';
+                let SubcatDeshabilitar = '';
+                let boton = '<button type="button" onclick="BuscarSubCategoria(' + subCategoria.SubCategoriaID + ')" class="btn btn-primary btn-sm" style="margin-right:5px">Editar SubCategoria</button>' +
+                    '<button type="button" onclick="Deshabilitar(' + subCategoria.SubCategoriaID + ',1)" class="btn btn-danger btn-sm">Deshabilitar</button>';
 
-                if (categoria.eliminado) {
-                    catDeshabilitar  = 'table-danger';
-                    boton = '<button type="button" onclick="Deshabilitar(' + categoria.categoriaID + ',0)" class="btn btn-warning btn-sm">Activar Categoria</button>';
+                if (subCategoria.eliminado) {
+                    SubcatDeshabilitar  = 'table-danger';
+                    boton = '<button type="button" onclick="Deshabilitar(' + subCategoria.SubCategoriaID + ',0)" class="btn btn-warning btn-sm">Activar Sub Categoria</button>';
                 }
 
-                $("#tbody-categorias").append('<tr class=' + catDeshabilitar  + '>' +
-                    '<td>' + categoria.descripcion + '</td>' +
+                $("#tbody-subcategorias").append('<tr class=' + SubcatDeshabilitar  + '>' +
+                    '<td>' + subCategoria.descripcion + '</td>' +
+                    '<td>' + subCategoria.categoriaDescripcion + '</td>' +
                     '<td class="text-center">' +
                     boton +
                     '</td>' +
@@ -44,7 +45,7 @@ function BuscarCategorias() {
         // son pasados como argumentos a la función
         // el objeto de la petición en crudo y código de estatus de la petición
         error: function (xhr, status) {
-            alert('Error al cargar categorias');
+            alert('Error al cargar Sub categorias');
         },
 
         // código a ejecutar sin importar si la petición falló o no
@@ -56,30 +57,30 @@ function BuscarCategorias() {
 
 function VaciarFormulario() {
     $("#Descripcion").val('');
-    $("#CategoriaID").val(0);
+    $("#SubCategoriaID").val(0);
 }
 
-function BuscarCategoria(categoriaID) {
+function BuscarSubCategoria(SubCategoriaID) {
     $.ajax({
         // la URL para la petición
-        url: '../../Categorias/BuscarCategorias',
+        url: '../../SubCategorias/BuscarSubCategorias',
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
-        data: { categoriaID: categoriaID },
+        data: { SubCategoriaID: SubCategoriaID },
         // especifica si será una petición POST o GET
         type: 'GET',
         // el tipo de información que se espera de respuesta
         dataType: 'json',
         // código a ejecutar si la petición es satisfactoria;
         // la respuesta es pasada como argumento a la función
-        success: function (categorias) {
+        success: function (SubCategorias) {
 
-            if (categorias.length == 1) {
-                let categoria = categorias[0];
-                $("#Descripcion").val(categoria.descripcion);
-                $("#CategoriaID").val(categoria.categoriaID);
+            if (SubCategorias.length == 1) {
+                let SubCategoria = SubCategorias[0];
+                $("#Descripcion").val(SubCategoria.descripcion);
+                $("#SubCategoriaID").val(SubCategoria.SubCategoriaID);
 
-                $("#ModalCategoria").modal("show");
+                $("#ModalSubCategoria").modal("show");
             }
         },
 
@@ -97,17 +98,19 @@ function BuscarCategoria(categoriaID) {
     });
 }
 
-function GuardarCategoria() {
+function GuardarSubCategoria() {
     //JAVASCRIPT
     let descripcion1 = document.getElementById("Descripcion").value;
-    let descripcion2 = $("#Descripcion").val();
-    let categoriaID = $("#CategoriaID").val();
+    // let descripcion2 = $("#Descripcion").val();
+    let SubCategoriaID = $("#SubCategoriaID").val(); 
+    console.log(SubCategoriaID)
+    let CategoriaID = $("#CategoriaID").val();
     $.ajax({
         // la URL para la petición
-        url: '../../Categorias/GuardarCategoria',
+        url: '../../SubCategorias/GuardarSubCategoria',
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
-        data: { categoriaID: categoriaID, descripcion: descripcion1 },
+        data: { SubCategoriaID: SubCategoriaID,CategoriaID: CategoriaID ,descripcion: descripcion1 },
         // especifica si será una petición POST o GET
         type: 'POST',
         // el tipo de información que se espera de respuesta
@@ -117,8 +120,8 @@ function GuardarCategoria() {
         success: function (resultado) {
 
             if (resultado) {
-                $("#ModalCategoria").modal("hide");
-                BuscarCategorias();
+                $("#ModalSubCategoria").modal("hide");
+                BuscarSubCategorias();
             }
             else {
                 alert("Existe una Categoría con la misma descripción.");
@@ -129,23 +132,25 @@ function GuardarCategoria() {
         // son pasados como argumentos a la función
         // el objeto de la petición en crudo y código de estatus de la petición
         error: function (xhr, status) {
-            alert('Disculpe, existió un problema');
+            alert('Disculpe, existió un problema al guardar');
         }
     });
 }
 
-function Deshabilitar(categoriaID,eliminado) {
+function Deshabilitar(subcategoriaID,eliminado) {
+   
     //JAVASCRIPT
-     let descripcion1 = document.getElementById("Descripcion").value;
-     let descripcion2 = $("#Descripcion").val();
-    //  let categoriaID = $("#CategoriaID").val();
-    //  let eliminado = $("Eliminado").val();
+    //  let descripcion1 = document.getElementById("Descripcion").value;
+    //  let descripcion2 = $("#Descripcion").val();
+    //   let categoriaID = $("#CategoriaID").val();
+    //   let eliminado = $("Eliminado").val();
+    
     $.ajax({
         // la URL para la petición
-        url: '../../Categorias/Deshabilitar',
+        url: '../../SubCategorias/Deshabilitar',
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
-        data: { CategoriaID: categoriaID,Eliminado: eliminado},
+        data: { SubCategoriaID: subcategoriaID,Eliminado: eliminado},
         // especifica si será una petición POST o GET
         type: 'POST',
         // el tipo de información que se espera de respuesta
@@ -155,8 +160,9 @@ function Deshabilitar(categoriaID,eliminado) {
         success: function (resultado) {
 
             if (resultado) {
+                
                
-                BuscarCategorias();
+                BuscarSubCategorias();
             }
             // else {
             //     alert("No se puede eliminar.");
@@ -167,7 +173,7 @@ function Deshabilitar(categoriaID,eliminado) {
         // son pasados como argumentos a la función
         // el objeto de la petición en crudo y código de estatus de la petición
         error: function (xhr, status) {
-            alert('Disculpe, existió un problema');
+            alert('Disculpe, existió un problema para deshabilitar');
         }
     });
 }

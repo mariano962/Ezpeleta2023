@@ -13,7 +13,7 @@
         <section>
             <form id="account" method="post">
                
-                <h2>Iniciar sesion</h2>
+                <h2 class="SubLog">Iniciar sesion</h2>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
                     <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
@@ -26,7 +26,7 @@
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div>
-                    <div class="checkbox">
+                    <div class="checkbox LinkPag">
                         <label asp-for="Input.RememberMe" class="form-label">
                             <input class="form-check-input" asp-for="Input.RememberMe" />
                             @Html.DisplayNameFor(m => m.Input.RememberMe)
@@ -34,14 +34,14 @@
                     </div>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Iniciar sesion</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg  Botones">Iniciar sesion</button>
                 </div>
                 <div>
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">¿Olvidaste tu contraseña?</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword" class="LinkPag">¿Olvidaste tu contraseña?</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrarse como nuevo usuario</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="LinkPag">Registrarse como nuevo usuario</a>
                     </p>
                     @* <p>
                         <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Reenviar correo electrónico de confirmación</a>

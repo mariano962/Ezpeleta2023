@@ -18,7 +18,7 @@ body {
 }
 
 .FondoLogin{
-  background-image: url("../Imagen/Degrade.jpg");
+  background: -webkit-linear-gradient(left, #a0b5eb 0%,#ea52f8 0%,#0066ff 100%);
   background-position: initial;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -28,45 +28,80 @@ body {
 .TituloLog{
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
+  color: #451049;
 }
 
 .SubLog{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #451049;
 }
 
 .FormularioLogin{
   width: 400px;
+  text-align: center;
   border-radius: 10px;
   padding: 10px 10px;
-  background-color: #f1cc7dd1;
+  background-color: transparent;
   border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  box-shadow: 2px 3px 3px 3px rgb(9, 80, 106);
+  
+}
+.LinkPag{
+  color: white;
+}
+a:hover{
+  color: #000;
+  
 }
 
 .FondoOlvidar{
-  background-image: url("../Imagen/celestePast.jpg");
+  background: -webkit-linear-gradient(left, #edaef9 0%,#81b1fa 100%);
 }
 
 .TituloOlvidar{
 font-family: Georgia, 'Times New Roman', Times, serif;
 text-align: center;
+color: #504040;
 }
 
 .SubOlvidar{
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
+  color: #423535;
+}
+.FormulariOlvidar{
+  width: 400px;
+  border-radius: 10px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(58, 57, 57);
+  border-color: black;
+  box-shadow: 2px 3px 3px 3px rgb(36, 26, 2);
+
+  opacity: 85%;
 }
 
 .FormularioRegister{
   width: 400px;
   border-radius: 10px;
   padding: 10px 10px;
-  background-color: #e2cd60;
+  opacity: 85%;
   border-radius: 10px;
-  border-color: #a66eaf;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  border-color: rgb(58, 57, 57);
+  border-color: black;
+  box-shadow: 2px 3px 3px 3px rgb(36, 26, 2);
 }
 
 .FondoRegister{
-  background-color: rgba(224, 203, 15, 0.537);
+  background: -webkit-linear-gradient(left, #2bbfe4 0%,#edf0af 100%);
 }
 
 .TituloRegister{
@@ -82,7 +117,7 @@ text-align: center;
 }
 
 .FondoHome{
-  background-image: linear-gradient(135deg, #624e18, #98b82fab, #fbb41c, #85831b, #b1a758, #d4eb45,#829124 );
+  background: -webkit-linear-gradient(left, #0f3443 0%,#34e69f 100%);
   background-size: 500%;
   animation: fanimado 20s infinite;
 }
@@ -110,3 +145,67 @@ text-align: center;
   align-items: center;
   justify-content: center;
 }
+
+.FondoCategorias{
+  background-image: linear-gradient(rgb(255, 255, 126), pink, rgb(125, 125, 255),white);
+}
+
+.TituloCategorias{
+  text-align: center; 
+  font-family: Arial rgb(255, 0, 0); 
+  font-weight: bold; 
+  font-size: 4em; 
+  color: #ffffff; 
+  text-shadow: 0 1px 0 #ddd, 0 2px 0 #ccc, 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 0 #acacac, 0 6px 1px rgba(0,0,0,0.1), 0 0 5px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.3), 0 3px 5px rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.2), 0 20px 20px rgba(0,0,0,0.15);
+  }
+
+  .SubCategorias{
+    text-align: center; 
+    font-family: Arial rgb(255, 0, 0); 
+    font-weight: bold; 
+    font-size: 4em; 
+    color: #ffffff; 
+    text-shadow: 0 1px 0 #ddd, 0 2px 0 #ccc, 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 0 #acacac, 0 6px 1px rgba(0,0,0,0.1), 0 0 5px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.3), 0 3px 5px rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.2), 0 20px 20px rgba(0,0,0,0.15);
+    }
+
+.Botones{
+  color: black;
+  background: -webkit-linear-gradient(left, #2bbfe4 0%,#eaecc6 100%);
+  box-shadow: 2px 2px 2px 2px rgb(36, 26, 2);
+  transition: 1s;
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  text-align: center center;
+} 
+.Botones:hover{
+  background: -webkit-linear-gradient(left, #8c366c 0%,#6f64e7 100%);
+  color: #fff
+  
+}
+
+.ColorNab{
+  background-color: #000000;
+  
+  font-family: 'Times New Roman', Times, serif;
+  box-shadow: 2px 13px 13px 13px rgb(36, 26, 2);
+}
+
+.LinkNav{
+  transition: 1s;
+  text-align: center;
+  
+  
+}
+
+.LinkNav:hover{
+  background-color: rgb(28, 28, 27);
+  border-radius: 20px;
+
+}
+
+
+  
+ 
