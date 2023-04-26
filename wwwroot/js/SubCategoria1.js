@@ -80,8 +80,8 @@ function BuscarSubCategoria(SubCategoriaID) {
             if (SubCategorias.length == 1) {
                 let SubCategoria = SubCategorias[0];
                 $("#Descripcion").val(SubCategoria.descripcion);
-                $("#SubCategoriaID").val(SubCategoria.SubCategoriaID);
-                $("#CategoriaID").val(SubCategoria.CategoriaID);
+                $("#SubCategoriaID").val(SubCategoria.subCategoriaID);
+                // $("#CategoriaID").val(SubCategoria.CategoriaID);
                 $("#ModalSubCategoria").modal("show");
             }
         },
