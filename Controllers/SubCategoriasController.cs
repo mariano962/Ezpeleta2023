@@ -42,9 +42,10 @@ public class SubCategoriasController : Controller
             {
                
                 Descripcion = subCategoria.Descripcion,
-                SubCategoriaID = subCategoria.CategoriaID,
+                SubCategoriaID = subCategoria.SubCategoriaID,
                 CategoriaID = subCategoria.CategoriaID,
-                CategoriaDescripcion = subCategoria.Categoria.Descripcion
+                CategoriaDescripcion = subCategoria.Categoria.Descripcion,
+                Eliminado = subCategoria.Eliminado
                 
             };
             subCategoriasMostrar.Add(SubcategoriaMostrar);

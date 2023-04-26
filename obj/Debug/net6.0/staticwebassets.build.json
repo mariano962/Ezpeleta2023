@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7yb43k2bMjhBb+jm8qjqfIr2hq49/aYJ5yxhccp+Jw8=",
+  "Hash": "rtF+QT8bHy5+SrP0ppJKaI82CK8LxjCh1lT7nl4/xG0=",
   "Source": "Ezpeleta2023",
   "BasePath": "_content/Ezpeleta2023",
   "Mode": "Default",
@@ -1103,23 +1103,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "C:\\Users\\ASUS\\Desktop\\Repos\\Ezpeleta2023\\wwwroot\\Imagen\\Pin de AIice Linnas en wallpaper en 2022 _ Fondos de pantalla de iphone, … _ Beautiful wallpapers for iphone, Wallpaper iphone summer, Beautiful wallpaper for phone.jpg",
-      "SourceId": "Ezpeleta2023",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Repos\\Ezpeleta2023\\wwwroot\\",
-      "BasePath": "_content/Ezpeleta2023",
-      "RelativePath": "Imagen/Pin de AIice Linnas en wallpaper en 2022 _ Fondos de pantalla de iphone, … _ Beautiful wallpapers for iphone, Wallpaper iphone summer, Beautiful wallpaper for phone.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Imagen\\Pin de AIice Linnas en wallpaper en 2022 _ Fondos de pantalla de iphone, … _ Beautiful wallpapers for iphone, Wallpaper iphone summer, Beautiful wallpaper for phone.jpg"
     },
     {
       "Identity": "C:\\Users\\ASUS\\Desktop\\Repos\\Ezpeleta2023\\wwwroot\\js\\Categoria.js",

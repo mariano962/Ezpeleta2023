@@ -24,4 +24,6 @@ public class VistaSubCategoria
     public string? Descripcion { get; set; }
     public int CategoriaID { get; set; }
     public string? CategoriaDescripcion { get; set; }
+
+     public bool Eliminado { get; set; }
 }

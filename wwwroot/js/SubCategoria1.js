@@ -20,12 +20,12 @@ function BuscarSubCategorias() {
             $.each(subCategorias, function (index, subCategoria) {
 
                 let SubcatDeshabilitar = '';
-                let boton = '<button type="button" onclick="BuscarSubCategoria(' + subCategoria.SubCategoriaID + ')" class="btn btn-primary btn-sm" style="margin-right:5px">Editar SubCategoria</button>' +
-                    '<button type="button" onclick="Deshabilitar(' + subCategoria.SubCategoriaID + ',1)" class="btn btn-danger btn-sm">Deshabilitar</button>';
+                let boton = '<button type="button" onclick="BuscarSubCategoria(' + subCategoria.subCategoriaID + ')" class="btn btn-primary btn-sm" style="margin-right:5px">Editar SubCategoria</button>' +
+                    '<button type="button" onclick="Deshabilitar(' + subCategoria.subCategoriaID + ',1)" class="btn btn-danger btn-sm">Deshabilitar</button>';
 
                 if (subCategoria.eliminado) {
                     SubcatDeshabilitar  = 'table-danger';
-                    boton = '<button type="button" onclick="Deshabilitar(' + subCategoria.SubCategoriaID + ',0)" class="btn btn-warning btn-sm">Activar Sub Categoria</button>';
+                    boton = '<button type="button" onclick="Deshabilitar(' + subCategoria.subCategoriaID + ',0)" class="btn btn-warning btn-sm">Activar Sub Categoria</button>';
                 }
 
                 $("#tbody-subcategorias").append('<tr class=' + SubcatDeshabilitar  + '>' +
@@ -61,7 +61,9 @@ function VaciarFormulario() {
 }
 
 function BuscarSubCategoria(SubCategoriaID) {
+    // $("#SubCategoriaID").val(SubCategoriaID);
     $.ajax({
+        
         // la URL para la petición
         url: '../../SubCategorias/BuscarSubCategorias',
         // la información a enviar
@@ -79,7 +81,7 @@ function BuscarSubCategoria(SubCategoriaID) {
                 let SubCategoria = SubCategorias[0];
                 $("#Descripcion").val(SubCategoria.descripcion);
                 $("#SubCategoriaID").val(SubCategoria.SubCategoriaID);
-
+                $("#CategoriaID").val(SubCategoria.CategoriaID);
                 $("#ModalSubCategoria").modal("show");
             }
         },
