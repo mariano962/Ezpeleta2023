@@ -125,20 +125,38 @@ public class SubCategoriasController : Controller
         int resultado = 0;
 
         var subCategoria = _contexto.SubCategorias.Find(SubCategoriaID);
-        if (subCategoria != null)
-        {
-            if (subCategoria.Eliminado == false)
+        var CATEGORIA = _contexto.Categorias.Where(c => c.CategoriaID == subCategoria.CategoriaID).FirstOrDefault();
+        
+        
+        
+            if (subCategoria != null)
             {
-            subCategoria.Eliminado = true;
-            _contexto.SaveChanges();             
+                if (subCategoria.Eliminado == true)
+                 {
+                    if (CATEGORIA.Eliminado == false)
+                    {
+                        subCategoria.Eliminado = false;
+                        _contexto.SaveChanges();             
+
+                    }
+                } 
+                 else 
+                {
+                     var validar = (from a in _contexto.Servicio where a.SubcategoriaID == SubCategoriaID && a.Eliminado == false select a).Count();
+                     if (validar == 0)
+                     {
+                        subCategoria.Eliminado = true;
+                        _contexto.SaveChanges();
+                        
+                     }
+                     
+                     
+                }
+                resultado = 1;
+               
             }
-       
-        else {
-            subCategoria.Eliminado = false;
-            _contexto.SaveChanges();
-        }
-            resultado = 1;
-        }
+            
+        
         return Json(resultado);
 
     }

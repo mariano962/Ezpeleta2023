@@ -18,6 +18,7 @@ function BuscarCategorias() {
 
             $("#tbody-categorias").empty();
             $.each(categorias, function (index, categoria) {
+                
 
                 let catDeshabilitar = '';
                 let boton = '<button type="button" onclick="BuscarCategoria(' + categoria.categoriaID + ')" class="btn btn-primary btn-sm" style="margin-right:5px">Editar Categoria</button>' +

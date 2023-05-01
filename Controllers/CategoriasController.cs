@@ -90,12 +90,6 @@ public class CategoriasController : Controller
     {
         int resultado = 0;
 
-        // var categoriasubcategoria = _contexto.SubCategorias.Where(s => s.SubCategoriaID == CategoriaID).Count();
-        // if (categoriasubcategoria == 0)
-        // {
-
-        // }
-
         var Categoria = _contexto.Categorias.Find(CategoriaID);
         if (Categoria != null)
         {
@@ -104,8 +98,6 @@ public class CategoriasController : Controller
                 Categoria.Eliminado = false;
                 _contexto.SaveChanges();
             }
-
-
             else
             {
                 var validarsub = (from a in _contexto.SubCategorias where a.CategoriaID == CategoriaID && a.Eliminado == false select a).Count();

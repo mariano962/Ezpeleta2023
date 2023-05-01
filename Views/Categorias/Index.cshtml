@@ -28,14 +28,22 @@
 </div>
 
 
+
 <div>
     <h1 class="display-4 TituloCategorias animate__animated animate__fadeInUpBig">Categorías</h1>
 
       <!-- Button trigger modal -->
       <div class="mb-2">
+        
+        @{
+          if(User.Identity.IsAuthenticated)
+          {
+            
         <button type="button" onclick="VaciarFormulario()" class="Botones" data-bs-toggle="modal" data-bs-target="#ModalCategoria">
             Nueva categoria
         </button>
+          }
+        }
       </div>
 
 
@@ -44,6 +52,7 @@
         <tr class="table-dark">
             <th>Descripcion</th><th></th>
         </tr>
+        
     </thead>
         <tbody id="tbody-categorias">        
         </tbody>

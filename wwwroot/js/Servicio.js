@@ -1,7 +1,7 @@
 window.onload = BuscarServicios();
 
 function BuscarServicios() {
-    $("#tbody-Servicios").empty();
+    $("#tbody-servicios").empty();
     $.ajax({
         // la URL para la petición
         url: '../../Servicios/BuscarServicios',
@@ -16,8 +16,10 @@ function BuscarServicios() {
         // la respuesta es pasada como argumento a la función
         success: function (servicios) {
 
+            console.log(servicios);
             $("#tbody-servicios").empty();
             $.each(servicios, function (index, servicios) {
+                console.log(servicios)
 
                 let ServicioDeshabilitar = '';
                 let boton = '<button type="button" onclick="BuscarServicio(' + servicios.servicioID + ')" class="btn btn-primary btn-sm" style="margin-right:5px">Editar Servicio</button>' +
@@ -28,11 +30,11 @@ function BuscarServicios() {
                     boton = '<button type="button" onclick="Deshabilitar(' + servicios.servicioID + ',0)" class="btn btn-warning btn-sm">Activar Servicio</button>';
                 }
 
-                $("#tbody-servicio").append('<tr class=' + ServicioDeshabilitar  + '>' +
+                $("#tbody-servicios").append('<tr class=' + ServicioDeshabilitar  + '>' +
                     '<td>' + servicios.descripcion + '</td>' +
-                    '<td>' + servicios.SubCategoriaID + '</td>' +
-                    '<td>' + servicios.Telefono + '</td>' +
-                    '<td>' + servicios.Direccion + '</td>' +
+                    '<td>' + servicios.subcategoriaDescripcion + '</td>' +
+                    '<td>' + servicios.telefono + '</td>' +
+                    '<td>' + servicios.direccion + '</td>' +
                     '<td class="text-center">' + boton +'</td>' +
                     '</tr>'
                     );
@@ -58,11 +60,15 @@ function BuscarServicios() {
 function VaciarFormulario() {
     $("#Descripcion").val('');
     $("#ServicioID").val(0);
+    $("#Direccion").val('');
+    $("#Telefono").val('');
+    
+
 }
 
 function BuscarServicio(ServicioID) {
     // $("#SubCategoriaID").val(SubCategoriaID);
-    debugger
+   
     $.ajax({
         
         // la URL para la petición
@@ -80,10 +86,11 @@ function BuscarServicio(ServicioID) {
 
             if (Servicio.length == 1) {
                 let Servicio12 = Servicio[0];
+                $("#ServicioID").val(Servicio12.servicioID);
                 $("#Descripcion").val(Servicio12.descripcion);
                 $("#SubCategoriaID").val(Servicio12.servicioID);
-                $("#Telefono").val(Servicio12.Telefono);
-                $("#Direccion").val(Servicio12.Direccion);
+                $("#Telefono").val(Servicio12.telefono);
+                $("#Direccion").val(Servicio12.direccion);
                 // $("#CategoriaID").val(SubCategoria.CategoriaID);
                 $("#ModalServicios").modal("show");
             }
@@ -108,6 +115,7 @@ function GuardarServicio() {
     let descripcion1 = document.getElementById("Descripcion").value;
     // let descripcion2 = $("#Descripcion").val();
     let ServicioID = $("#ServicioID").val(); 
+    console.log(ServicioID)
     let SubcategoriaID = $("#SubcategoriaID").val();
     let Telefono = $("#Telefono").val(); 
     let Direccion = $("#Direccion").val();
@@ -168,8 +176,7 @@ function Deshabilitar(servicioID,eliminado) {
 
             if (resultado) {
                 
-               
-                BuscarServicio();
+                BuscarServicios();
             }
             // else {
             //     alert("No se puede eliminar.");

@@ -42,7 +42,7 @@ public class ServiciosController : Controller
                 ServicioID = servicio.ServicioID,
                 Descripcion = servicio.Descripcion,
                 Telefono = servicio.Telefono,
-                Direccion = servicio.Descripcion,
+                Direccion = servicio.Direccion,
                 Eliminado = servicio.Eliminado,
                 SubCategoriaID = servicio.SubcategoriaID,
                 SubcategoriaDescripcion = servicio.SubCategoria.Descripcion,
@@ -84,7 +84,7 @@ public class ServiciosController : Controller
             else
             {
                 //BUSCAMOS EN LA TABLA SI EXISTE UNA CON LA MISMA DESCRIPPCION Y DISTINTO ID AL QUE ESTAMOS EDIANDO
-                var serviciOriginal = _contexto.Servicio.Where(s => s.Descripcion == descripcion && s.SubcategoriaID != ServicioID).FirstOrDefault();
+                var serviciOriginal = _contexto.Servicio.Where(s => s.Descripcion == descripcion && s.SubcategoriaID == ServicioID).FirstOrDefault();
                 if (serviciOriginal == null)
                 {
                     //CREAR VARIABLE QUE GUARDE EL OBJETO CON EL ID DESEADO
@@ -112,34 +112,28 @@ public class ServiciosController : Controller
     {
         int resultado = 0;
 
-        // var categoriasubcategoria = _contexto.SubCategorias.Where(s => s.SubCategoriaID == CategoriaID).Count();
-        // if (categoriasubcategoria == 0)
-        // {
-
-        // }
-
         var servi = _contexto.Servicio.Find(ServicioID);
-        if (servi != null)
+
+        var subcategoriia = _contexto.SubCategorias.Where(s => s.SubCategoriaID == servi.SubcategoriaID).FirstOrDefault();
+        if ( servi != null)
         {
-            if (servi.Eliminado == true)
+            if (subcategoriia.Eliminado == false)
             {
-                servi.Eliminado = false;
-                _contexto.SaveChanges();
-            }
-
-
-            else
-            {
-                var validarsub = (from a in _contexto.Servicio where a.SubcategoriaID == SubCategoriaID && a.Eliminado == false select a).Count();
-                if (validarsub == 0)
+                if (servi.Eliminado == false)
                 {
                     servi.Eliminado = true;
                     _contexto.SaveChanges();
+                } else {
+                    var validarsub = (from a in _contexto.Servicio where a.SubcategoriaID == SubCategoriaID && a.Eliminado == false select a).Count();
+                    if (validarsub == 0)
+                    {
+                        servi.Eliminado = false;
+                        _contexto.SaveChanges();
+                    }
                 }
-
-
+                resultado = 1;
             }
-            resultado = 1;
+            
         }
         return Json(resultado);
 
