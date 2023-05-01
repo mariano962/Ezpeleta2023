@@ -147,7 +147,7 @@ text-align: center;
 }
 
 .FondoCategorias{
-  background-image: linear-gradient(rgb(255, 255, 126), pink, rgb(125, 125, 255),white);
+  background-image: linear-gradient(rgb(255, 255, 65), rgb(253, 122, 143), rgb(80, 80, 255),rgba(255, 255, 255, 0.303));
 }
 
 .TituloCategorias{
@@ -172,7 +172,7 @@ text-align: center;
   color: black;
   background: -webkit-linear-gradient(left, #2bbfe4 0%,#eaecc6 100%);
   box-shadow: 2px 2px 2px 2px rgb(36, 26, 2);
-  transition: 1s;
+  
   width: 200px;
   height: 40px;
   border-radius: 5px;
@@ -181,8 +181,10 @@ text-align: center;
   text-align: center center;
 } 
 .Botones:hover{
-  background: -webkit-linear-gradient(left, #8c366c 0%,#6f64e7 100%);
-  color: #fff
+  background: -webkit-linear-gradient(left, #8c366c 10%,#6f64e7 100%);
+  color: #fff;
+  transition: 2s;
+  
   
 }
 
@@ -197,7 +199,6 @@ text-align: center;
   transition: 1s;
   text-align: center;
   
-  
 }
 
 .LinkNav:hover{
@@ -207,5 +208,32 @@ text-align: center;
 }
 
 
-  
+.tablaColor{
+ background-color: #4a90f890;
+ text-align: center;
+ font-size: 17px;
+}  
+
+.tablaroja{
+  background-color: rgba(196, 35, 35, 0.738);
+}
+
+.MODAL{
+  background-color: rgba(0, 0, 0, 0.653);
+  color: white;
+  border-color: white;
+  border-width: 2px;
+  box-shadow: 0px 0px 3px 3px #000;
+}
+
+.MODAL:hover{
+background-color: #000;
+transition: 2s;
+box-shadow: 0px 0px 3px 3px #1bbfc8;
+}
+
+.PalabrasTabla{
+  color: rgb(0, 0, 0);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
  

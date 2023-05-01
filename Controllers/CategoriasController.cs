@@ -37,6 +37,8 @@ public class CategoriasController : Controller
     {
         bool resultado = false;
 
+
+
         if (!string.IsNullOrEmpty(descripcion))
         {
 
@@ -88,24 +90,43 @@ public class CategoriasController : Controller
     {
         int resultado = 0;
 
+        // var categoriasubcategoria = _contexto.SubCategorias.Where(s => s.SubCategoriaID == CategoriaID).Count();
+        // if (categoriasubcategoria == 0)
+        // {
+
+        // }
+
         var Categoria = _contexto.Categorias.Find(CategoriaID);
         if (Categoria != null)
         {
-            if (Categoria.Eliminado == false)
+            if (Categoria.Eliminado == true)
             {
-            Categoria.Eliminado = true;
-            _contexto.SaveChanges();             
+                Categoria.Eliminado = false;
+                _contexto.SaveChanges();
             }
-       
-        else {
-            Categoria.Eliminado = false;
-            _contexto.SaveChanges();
-        }
-            resultado = 1;
+
+
+            else
+            {
+                var validarsub = (from a in _contexto.SubCategorias where a.CategoriaID == CategoriaID && a.Eliminado == false select a).Count();
+                if (validarsub == 0)
+                {
+                    Categoria.Eliminado = true;
+                    _contexto.SaveChanges();
+                }
+                else
+                {
+                    
+                resultado = 1;
+                }
+
+
+            }
         }
         return Json(resultado);
 
     }
+
 
 
 

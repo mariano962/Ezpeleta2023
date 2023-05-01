@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rtF+QT8bHy5+SrP0ppJKaI82CK8LxjCh1lT7nl4/xG0=",
+  "Hash": "fgKxPSiIe/q4T4vHqPx1hYuM3/olaLus3Wn6lfAQ77I=",
   "Source": "Ezpeleta2023",
   "BasePath": "_content/Ezpeleta2023",
   "Mode": "Default",
@@ -1120,6 +1120,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Categoria.js"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\Repos\\Ezpeleta2023\\wwwroot\\js\\Servicio.js",
+      "SourceId": "Ezpeleta2023",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\Repos\\Ezpeleta2023\\wwwroot\\",
+      "BasePath": "_content/Ezpeleta2023",
+      "RelativePath": "js/Servicio.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Servicio.js"
     },
     {
       "Identity": "C:\\Users\\ASUS\\Desktop\\Repos\\Ezpeleta2023\\wwwroot\\js\\site.js",

@@ -1,0 +1,64 @@
+<body class="FondoCategorias">
+    <!-- Modal -->
+  <div class="modal fade" id="ModalServicios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content MODAL">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Servicio</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="ServicioID" value="0">
+          <div>
+              <label class="control-label">Descripcion</label>
+              <input type="text" class="form-control" id="Descripcion" autocomplete="off" onkeyup="this.value = this.value.toUpperCase()" />
+          </div>
+          <div>
+              <label class="control-label">Teléfono</label>
+              <input type="tel" class="form-control" id="Telefono" autocomplete="off" onkeyup="this.value = this.value.toUpperCase()" />
+          </div>
+          <div>
+              <label class="control-label">Direccion</label>
+              <input type="text" class="form-control" id="Direccion" autocomplete="off" onkeyup="this.value = this.value.toUpperCase()" />
+          </div>
+          <div>
+             <label class="control-label">SubCategoria</label>
+              @Html.DropDownList("SubcategoriaID", null, htmlAttributes: new { @class = "form-control" })
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" onclick="GuardarServicio()" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+      <h1 class="display-4 SubCategorias animate__animated animate__fadeInUpBig">Servicio</h1>
+
+        <!-- Button trigger modal -->
+        <div class="mb-2">
+          <button type="button" onclick="VaciarFormulario()" class="Botones" data-bs-toggle="modal" data-bs-target="#ModalServicios">
+              Servicio Nuevo
+          </button>
+        </div>
+
+
+    <table class="table table-bordered PalabrasTabla table-condensed tablaColor table-hover">
+      <thead>
+          <tr class="table-dark">
+              <th>Servicio</th><th>Sub Categoria</th> <th>Telefono</th><th>Direccion</th> <th></th>
+          </tr>
+          
+      </thead>
+          <tbody id="tbody-servicio">        
+          </tbody>
+    </table>
+  </div>
+</body>
+
+ @section Scripts {
+  <script src ="~/js/Servicio.js"></script>
+ }

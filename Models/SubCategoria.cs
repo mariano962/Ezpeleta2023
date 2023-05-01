@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ezpeleta2023.Models;
 
+
 public class SubCategoria
 {
     [Key]
@@ -14,6 +15,8 @@ public class SubCategoria
     public virtual Categoria? Categoria { get; set; }
 
     public int CategoriaID { get; set; }
+
+    ICollection<Servicio>?Servicios { get; set; }
 
 }
 
