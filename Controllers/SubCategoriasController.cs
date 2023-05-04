@@ -139,6 +139,7 @@ public class SubCategoriasController : Controller
                     if (CATEGORIA.Eliminado == false)
                     {
                         subCategoria.Eliminado = false;
+                        resultado = 1;
                         _contexto.SaveChanges();             
 
                     }
@@ -149,13 +150,18 @@ public class SubCategoriasController : Controller
                      if (validar == 0)
                      {
                         subCategoria.Eliminado = true;
+                        resultado = 1;
                         _contexto.SaveChanges();
                         
+                     }
+                     else
+                     {
+                        resultado = 0;
                      }
                      
                      
                 }
-                resultado = 1;
+               
                
             }
             

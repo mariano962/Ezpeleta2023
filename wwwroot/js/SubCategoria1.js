@@ -167,7 +167,8 @@ function Deshabilitar(subcategoriaID,eliminado) {
         // la respuesta es pasada como argumento a la función
         success: function (resultado) {
 
-            if (resultado == 0) {
+            console.log(resultado)
+            if (resultado == 1) {
                 
                
                 BuscarSubCategorias();
@@ -187,13 +188,7 @@ function Deshabilitar(subcategoriaID,eliminado) {
         // son pasados como argumentos a la función
         // el objeto de la petición en crudo y código de estatus de la petición
         error: function (xhr, status) {
-            Swal.fire({
-                icon: 'error',
-                title: 'No se puede eliminar ya que se esta utilizando la sub categoria',
-                timer: 3000,
-                timerProgressBar: true,
-
-            })
+           
         }
     });
 }
