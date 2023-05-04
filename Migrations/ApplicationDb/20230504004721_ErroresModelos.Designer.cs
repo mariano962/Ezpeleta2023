@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Ezpeleta2023.Migrations
+namespace Ezpeleta2023.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230427223914_Servicio")]
-    partial class Servicio
+    [Migration("20230504004721_ErroresModelos")]
+    partial class ErroresModelos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

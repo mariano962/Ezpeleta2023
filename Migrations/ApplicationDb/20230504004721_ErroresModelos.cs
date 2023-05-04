@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Ezpeleta2023.Migrations
+namespace Ezpeleta2023.Migrations.ApplicationDb
 {
-    public partial class Categoria : Migration
+    public partial class ErroresModelos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

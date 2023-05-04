@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Ezpeleta2023.Migrations.Ezpeleta2023Db
+namespace Ezpeleta2023.Migrations
 {
     [DbContext(typeof(Ezpeleta2023DbContext))]
-    [Migration("20230420185114_CambiosSub")]
-    partial class CambiosSub
+    [Migration("20230504004615_ErroresModelos")]
+    partial class ErroresModelos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,6 +42,36 @@ namespace Ezpeleta2023.Migrations.Ezpeleta2023Db
                     b.ToTable("Categorias");
                 });
 
+            modelBuilder.Entity("Ezpeleta2023.Models.Servicio", b =>
+                {
+                    b.Property<int>("ServicioID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServicioID"), 1L, 1);
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Direccion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SubcategoriaID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Telefono")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ServicioID");
+
+                    b.HasIndex("SubcategoriaID");
+
+                    b.ToTable("Servicio");
+                });
+
             modelBuilder.Entity("Ezpeleta2023.Models.SubCategoria", b =>
                 {
                     b.Property<int>("SubCategoriaID")
@@ -66,15 +96,36 @@ namespace Ezpeleta2023.Migrations.Ezpeleta2023Db
                     b.ToTable("SubCategorias");
                 });
 
+            modelBuilder.Entity("Ezpeleta2023.Models.Servicio", b =>
+                {
+                    b.HasOne("Ezpeleta2023.Models.SubCategoria", "SubCategoria")
+                        .WithMany("Servicios")
+                        .HasForeignKey("SubcategoriaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SubCategoria");
+                });
+
             modelBuilder.Entity("Ezpeleta2023.Models.SubCategoria", b =>
                 {
                     b.HasOne("Ezpeleta2023.Models.Categoria", "Categoria")
-                        .WithMany()
+                        .WithMany("SubCategorias")
                         .HasForeignKey("CategoriaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Categoria");
+                });
+
+            modelBuilder.Entity("Ezpeleta2023.Models.Categoria", b =>
+                {
+                    b.Navigation("SubCategorias");
+                });
+
+            modelBuilder.Entity("Ezpeleta2023.Models.SubCategoria", b =>
+                {
+                    b.Navigation("Servicios");
                 });
 #pragma warning restore 612, 618
         }

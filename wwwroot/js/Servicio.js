@@ -26,8 +26,8 @@ function BuscarServicios() {
                     '<button type="button" onclick="Deshabilitar(' + servicios.servicioID + ',1)" class="btn btn-danger btn-sm">Deshabilitar</button>';
 
                 if (servicios.eliminado) {
-                    ServicioDeshabilitar  = 'table-danger';
-                    boton = '<button type="button" onclick="Deshabilitar(' + servicios.servicioID + ',0)" class="btn btn-warning btn-sm">Activar Servicio</button>';
+                    ServicioDeshabilitar  = 'tablaroja';
+                    boton = '<button type="button" onclick="Deshabilitar(' + servicios.servicioID + ',0)" class="btn btn-success btn-sm">Activar Servicio</button>';
                 }
 
                 $("#tbody-servicios").append('<tr class=' + ServicioDeshabilitar  + '>' +
@@ -35,6 +35,7 @@ function BuscarServicios() {
                     '<td>' + servicios.subcategoriaDescripcion + '</td>' +
                     '<td>' + servicios.telefono + '</td>' +
                     '<td>' + servicios.direccion + '</td>' +
+                    '<td>' + servicios.categoriaDescripcion + '</td>' +
                     '<td class="text-center">' + boton +'</td>' +
                     '</tr>'
                     );
@@ -89,6 +90,7 @@ function BuscarServicio(ServicioID) {
                 $("#ServicioID").val(Servicio12.servicioID);
                 $("#Descripcion").val(Servicio12.descripcion);
                 $("#SubCategoriaID").val(Servicio12.servicioID);
+                $("#CategoriaID").val(Servicio12.categoriaID);
                 $("#Telefono").val(Servicio12.telefono);
                 $("#Direccion").val(Servicio12.direccion);
                 // $("#CategoriaID").val(SubCategoria.CategoriaID);
@@ -139,7 +141,13 @@ function GuardarServicio() {
                 BuscarServicios();
             }
             else {
-                alert("Existe un Servicio con la misma descripción.");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'existe un servicio con la misma descripción',
+                    timer: 3000,
+                    timerProgressBar: true,
+    
+                })
             }
         },
 

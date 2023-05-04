@@ -12,11 +12,11 @@ public class SubCategoria
 
     public bool Eliminado  { get; set; }
 
-    public virtual Categoria? Categoria { get; set; }
-
     public int CategoriaID { get; set; }
 
-    ICollection<Servicio>?Servicios { get; set; }
+    public virtual Categoria? Categoria { get; set; }
+
+    public virtual ICollection<Servicio>? Servicios { get; set; }
 
 }
 

@@ -122,7 +122,13 @@ function GuardarCategoria() {
                 BuscarCategorias();
             }
             else {
-                alert("Existe una Categoría con la misma descripción.");
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Ya existe una categoria con el mismo nombre',
+                    timer: 3000,
+                    timerProgressBar: true,
+ 
+                })
             }
         },
 
@@ -160,7 +166,13 @@ function Deshabilitar(categoriaID,eliminado) {
                 BuscarCategorias();
             }
             else {
-                alert("No se puede eliminar.");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No se puede eliminar ya que se esta utilizando la categoria',
+                    timer: 3000,
+                    timerProgressBar: true,
+ 
+                })
             }
         },
 

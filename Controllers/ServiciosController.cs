@@ -4,11 +4,15 @@ using Ezpeleta2023.Data;
 using Ezpeleta2023.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ezpeleta2023.Controllers;
 
+[Authorize]
 public class ServiciosController : Controller
 {
+     
+    
     private readonly ILogger<ServiciosController> _logger;
     private Ezpeleta2023DbContext _contexto;
 
@@ -30,7 +34,7 @@ public class ServiciosController : Controller
     {
         List<VistaServicio> servicioMostrar = new List<VistaServicio>();
 
-        var Servicio = _contexto.Servicio.Include(s => s.SubCategoria).ToList();
+        var Servicio = _contexto.Servicio.Include(s => s.SubCategoria).Include(s => s.SubCategoria.Categoria).ToList();
         if (ServicioID > 0)
         {
             Servicio = Servicio.Where(s => s.ServicioID == ServicioID).OrderBy(s => s.Descripcion).ToList();
@@ -46,6 +50,8 @@ public class ServiciosController : Controller
                 Eliminado = servicio.Eliminado,
                 SubCategoriaID = servicio.SubcategoriaID,
                 SubcategoriaDescripcion = servicio.SubCategoria.Descripcion,
+                CategoriaID = servicio.SubCategoria.Categoria.CategoriaID,
+                CategoriaDescripcion = servicio.SubCategoria.Categoria.Descripcion,
 
             };
             servicioMostrar.Add(ServicioMostrar);
@@ -84,7 +90,7 @@ public class ServiciosController : Controller
             else
             {
                 //BUSCAMOS EN LA TABLA SI EXISTE UNA CON LA MISMA DESCRIPPCION Y DISTINTO ID AL QUE ESTAMOS EDIANDO
-                var serviciOriginal = _contexto.Servicio.Where(s => s.Descripcion == descripcion && s.SubcategoriaID == ServicioID).FirstOrDefault();
+                var serviciOriginal = _contexto.Servicio.Where(s => s.Descripcion == descripcion && s.SubcategoriaID == SubCategoriaID).FirstOrDefault();
                 if (serviciOriginal == null)
                 {
                     //CREAR VARIABLE QUE GUARDE EL OBJETO CON EL ID DESEADO
@@ -110,6 +116,7 @@ public class ServiciosController : Controller
 
     public JsonResult Deshabilitar(int ServicioID, int Eliminado, int SubCategoriaID)
     {
+        
         int resultado = 0;
 
         var servi = _contexto.Servicio.Find(ServicioID);

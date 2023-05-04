@@ -24,8 +24,8 @@ function BuscarSubCategorias() {
                     '<button type="button" onclick="Deshabilitar(' + subCategoria.subCategoriaID + ',1)" class="btn btn-danger btn-sm">Deshabilitar</button>';
 
                 if (subCategoria.eliminado) {
-                    SubcatDeshabilitar  = 'table-danger';
-                    boton = '<button type="button" onclick="Deshabilitar(' + subCategoria.subCategoriaID + ',0)" class="btn btn-warning btn-sm">Activar Sub Categoria</button>';
+                    SubcatDeshabilitar  = 'tablaroja';
+                    boton = '<button type="button" onclick="Deshabilitar(' + subCategoria.subCategoriaID + ',0)" class="btn btn-success btn-sm">Activar Sub Categoria</button>';
                 }
 
                 $("#tbody-subcategorias").append('<tr class=' + SubcatDeshabilitar  + '>' +
@@ -126,7 +126,13 @@ function GuardarSubCategoria() {
                 BuscarSubCategorias();
             }
             else {
-                alert("Existe una Categoría con la misma descripción.");
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Ya existe una subcategoria con ese nombre y misma categoria',
+                    timer: 3000,
+                    timerProgressBar: true,
+ 
+                })
             }
         },
 
@@ -161,21 +167,33 @@ function Deshabilitar(subcategoriaID,eliminado) {
         // la respuesta es pasada como argumento a la función
         success: function (resultado) {
 
-            if (resultado) {
+            if (resultado == 0) {
                 
                
                 BuscarSubCategorias();
             }
-            // else {
-            //     alert("No se puede eliminar.");
-            // }
+             else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No se puede eliminar ya que se esta utilizando la sub categoria',
+                    timer: 3000,
+                    timerProgressBar: true,
+    
+                })
+             }
         },
 
         // código a ejecutar si la petición falla;
         // son pasados como argumentos a la función
         // el objeto de la petición en crudo y código de estatus de la petición
         error: function (xhr, status) {
-            alert('Disculpe, existió un problema para deshabilitar');
+            Swal.fire({
+                icon: 'error',
+                title: 'No se puede eliminar ya que se esta utilizando la sub categoria',
+                timer: 3000,
+                timerProgressBar: true,
+
+            })
         }
     });
 }

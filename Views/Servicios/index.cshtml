@@ -8,7 +8,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <input  id="ServicioID" value="0">
+          <input type="hidden" id="ServicioID" value="0">
           <div>
               <label class="control-label">Descripcion</label>
               <input type="text" class="form-control" id="Descripcion" autocomplete="off" onkeyup="this.value = this.value.toUpperCase()" />
@@ -46,10 +46,10 @@
         </div>
 
 
-    <table class="table table-bordered PalabrasTabla table-condensed tablaColor table-hover">
+    <table class="table table-bordered  table-condensed tablaColor table-hover PalabrasTabla">
       <thead>
           <tr class="table-dark">
-              <th>Servicio</th><th>Sub Categoria</th> <th>Telefono</th><th>Direccion</th> <th></th>
+              <th>Servicio</th><th>Sub Categoria</th> <th>Telefono</th><th>Direccion</th> <th>Categoria</th><th></th>
           </tr>
           
       </thead>

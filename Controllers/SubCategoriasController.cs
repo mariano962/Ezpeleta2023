@@ -4,11 +4,14 @@ using Ezpeleta2023.Data;
 using Ezpeleta2023.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ezpeleta2023.Controllers;
 
+[Authorize]
 public class SubCategoriasController : Controller
 {
+    
    private readonly ILogger<SubCategoriasController> _logger;
     private Ezpeleta2023DbContext _contexto;
 

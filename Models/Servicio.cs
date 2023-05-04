@@ -13,16 +13,20 @@ public class Servicio
 
     public string? Direccion { get; set; }
 
-    public virtual SubCategoria? SubCategoria { get; set; }
-
     public int SubcategoriaID { get; set; }
 
     public bool Eliminado { get; set; }
+    
+    public virtual SubCategoria? SubCategoria { get; set; }
 }
 
 public class VistaServicio
 {
     public int ServicioID { get; set; }
+
+    public int CategoriaID { get; set; }
+
+    public string? CategoriaDescripcion { get; set; }
 
     public string? Descripcion { get; set; }
     public string? Telefono { get; set; }

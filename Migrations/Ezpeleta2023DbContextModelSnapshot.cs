@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Ezpeleta2023.Migrations.Ezpeleta2023Db
+namespace Ezpeleta2023.Migrations
 {
     [DbContext(typeof(Ezpeleta2023DbContext))]
     partial class Ezpeleta2023DbContextModelSnapshot : ModelSnapshot
@@ -97,7 +97,7 @@ namespace Ezpeleta2023.Migrations.Ezpeleta2023Db
             modelBuilder.Entity("Ezpeleta2023.Models.Servicio", b =>
                 {
                     b.HasOne("Ezpeleta2023.Models.SubCategoria", "SubCategoria")
-                        .WithMany()
+                        .WithMany("Servicios")
                         .HasForeignKey("SubcategoriaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -108,12 +108,22 @@ namespace Ezpeleta2023.Migrations.Ezpeleta2023Db
             modelBuilder.Entity("Ezpeleta2023.Models.SubCategoria", b =>
                 {
                     b.HasOne("Ezpeleta2023.Models.Categoria", "Categoria")
-                        .WithMany()
+                        .WithMany("SubCategorias")
                         .HasForeignKey("CategoriaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Categoria");
+                });
+
+            modelBuilder.Entity("Ezpeleta2023.Models.Categoria", b =>
+                {
+                    b.Navigation("SubCategorias");
+                });
+
+            modelBuilder.Entity("Ezpeleta2023.Models.SubCategoria", b =>
+                {
+                    b.Navigation("Servicios");
                 });
 #pragma warning restore 612, 618
         }

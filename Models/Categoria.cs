@@ -9,5 +9,7 @@ public class Categoria
     public string? Descripcion { get; set; }
     public bool Eliminado { get; set; }
 
-    ICollection<SubCategoria>?SubCategorias { get; set; }
+    public virtual ICollection<SubCategoria>? SubCategorias { get; set; }
+
+    
 }
