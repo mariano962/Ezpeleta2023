@@ -186,9 +186,15 @@ function Deshabilitar(servicioID,eliminado) {
                 
                 BuscarServicios();
             }
-            // else {
-            //     alert("No se puede eliminar.");
-            // }
+             else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No se puede activar ya que esta deshabilitada la subcategoría',
+                    timer: 3000,
+                    timerProgressBar: true,
+    
+                })
+             }
         },
 
         // código a ejecutar si la petición falla;

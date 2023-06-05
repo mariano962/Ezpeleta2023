@@ -176,8 +176,9 @@ function Deshabilitar(subcategoriaID,eliminado) {
              else {
                 Swal.fire({
                     icon: 'error',
-                    title: 'No se puede eliminar ya que se esta utilizando la sub categoria',
-                    timer: 3000,
+                    text: 'Si usted quiere activar la subcategoria primero debe activar la categoria.Si usted quiere dehabilitar la subcategoria primero debe deshabilitar el servicio',
+                    
+                    timer: 6000,
                     timerProgressBar: true,
     
                 })
